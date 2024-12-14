@@ -2,6 +2,7 @@ import './App.css'
 import Explore from './components/Explore'
 import Hero from './components/Hero'
 import NavBar from './components/NavBar'
+import TopDestinations from './components/TopDestinations'
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
 <NavBar/>
 <Hero/>
 <Explore/>
+<TopDestinations/>
 </>
   )
 }
