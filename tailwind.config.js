@@ -7,11 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        roboto: ['Roboto', 'sans-serif'], 
-        poppins: ['Poppins', 'sans-serif'],
-        greatVibes: ['Great Vibes', 'cursive'],
-        cursive: ['Style Script', 'cursive']
-
+        'instrument': ['"Instrument Serif"', 'serif'], // Add Instrument Serif
+        'inter': ['Inter', 'sans-serif'], // Add Inter as well if needed
       },
     },
   },
