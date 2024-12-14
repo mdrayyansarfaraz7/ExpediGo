@@ -29,7 +29,7 @@ function NavBar() {
                 </div>
 
                 <div className='hidden md:flex lg:flex'>
-                    <button className='border-none bg-blue-600 rounded-md p-2 lg:p-3 duration-700 font-light text-white hover:shadow-2xl hover:shadow-sky-200'>
+                    <button className='border-none bg-blue-600 rounded-md p-2 lg:p-3 duration-700 font-normal text-white hover:shadow-2xl hover:shadow-sky-200'>
                         Call Now
                     </button>
                 </div>

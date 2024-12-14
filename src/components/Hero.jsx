@@ -6,7 +6,7 @@ import { TbMountainFilled } from "react-icons/tb";
 function Hero() {
     return (
         <div className="w-full h-[95vh] bg-[url('/Hero.png')] bg-cover bg-center flex flex-col justify-center items-center ">
-            <div className="w-[90%] md:w-[800px] text-center my-20 md:mt-24 mx-auto">
+            <div className="w-[90%] md:w-[800px] text-center my-20 mx-auto">
                 <h1 className="text-white text-4xl md:text-6xl lg:text-6xl font-inter">
                     Pack your bags &#x26; leave the <span className="font-instrument italic">planning</span> to us ✌️
                 </h1>
