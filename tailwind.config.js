@@ -11,6 +11,9 @@ export default {
         'inter': ['Inter', 'sans-serif'], // Add Inter as well if needed
         'Montserrat':['Montserrat','sans-serif'] // Add Montserrat  as well if needed
       },
+      screens: {
+        'custom-1110': '1110px',
+      }
     },
   },
   plugins: [],
