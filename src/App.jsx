@@ -1,5 +1,6 @@
 import './App.css'
 import Advertisement from './components/Advertisement'
+import Customised from './components/Customised'
 import Explore from './components/Explore'
 import ExploreInternational from './components/ExploreInternational'
 import Hero from './components/Hero'
@@ -14,6 +15,7 @@ function App() {
 <Hero/>
 <Explore/>
 <TopDestinations/>
+<Customised/>
 <ExploreInternational/>
 <Advertisement/>
 </>

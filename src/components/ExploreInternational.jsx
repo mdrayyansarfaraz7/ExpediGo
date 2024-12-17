@@ -46,8 +46,7 @@ function ExploreInternational() {
         <Card key={index} destination={item.destination} url={item.url} price={item.price}/>
       ))}
         </div>
-                
-                </>
+     </>
     )
 }
 

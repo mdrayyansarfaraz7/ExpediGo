@@ -12,7 +12,7 @@ export default {
         'Montserrat':['Montserrat','sans-serif'] // Add Montserrat  as well if needed
       },
       screens: {
-        'custom-1110': '1110px',
+        'range-1110-1000': { max: '1110px', min: '1000px' },
       }
     },
   },
