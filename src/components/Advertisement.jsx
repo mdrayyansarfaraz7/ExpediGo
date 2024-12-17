@@ -15,15 +15,15 @@ function Advertisement() {
             </div>
 
         </div>
-        <div className='px-4'>
+        <div className='px-2'>
             <div className='flex justify-center items-center gap-4 flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row'>
-                <img src="/g1.jpg" alt="" className='w-[318px] h-[200px] rounded-md'/>
-                <img src="/g2.jpg" alt="" className='w-[318px] h-[200px] rounded-md'/>
+                <img src="/g1.jpg" alt="" className='md:w-[260px] w-[318px] h-[200px] rounded-md'/>
+                <img src="/g2.jpg" alt="" className='md:w-[260px] w-[318px] h-[200px] rounded-md'/>
 
             </div>
             <div className='flex justify-center items-center gap-4 mt-4 flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row'>
-            <img src="/g3.webp" alt="" className='w-[318px] h-[200px] rounded-md'/>
-            <img src="/g4.jpg" alt=""  className='w-[318px] h-[200px] rounded-md'/>
+            <img src="/g3.webp" alt="" className='md:w-[260px] w-[318px] h-[200px] rounded-md'/>
+            <img src="/g4.jpg" alt=""  className='md:w-[260px] w-[318px] h-[200px] rounded-md'/>
             </div>
         </div>
     </div>

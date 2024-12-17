@@ -29,12 +29,12 @@ function ExploreInternational() {
 
                 <>
                         <div className='px-8 py-3 mt-5'>
-            <div className='p-10 flex flex-col md:flex-row lg:flex-row gap-5 md:gap-2 items-center'>
+            <div className='p-10 flex flex-col lg:flex-row gap-5 md:gap-2 items-center justify-between'>
                 <div>
-                    <h1 className=' font-inter text-5xl font-semibold text-center md:text-left lg:text-left'>
+                    <h1 className=' font-inter text-5xl font-semibold text-center md:text-center lg:text-left'>
                     Explore Top Destinations
                     </h1>
-                    <p className='mt-10 font-inter text-slate-600 text-lg w-[95%] md:w-[75%] lg:[w-75%] text-center md:text-left lg:text-left'>
+                    <p className='mt-10 font-inter text-slate-600 text-lg w-[95%] md:w-[700px] lg:w-[850px] xl:w-[1000px] 2xl:w-[1150px] text-center md:text-center lg:text-left'>
                     Going somewhere to celebrate this season? Whether you’re going home or somewhere to roam, we’ve got the travel tools to get you to your destination.
                     </p>
                 </div>
