@@ -7,7 +7,7 @@ function ReviewCard({ content, stars, user, occ }) {
   const nonStars = 5 - validatedStars;
 
   return (
-    <div className="h-[388px] w-[372px] p-2">
+    <div className="h-[388px] w-[372px] px-14">
       <div className="flex justify-between items-center h-[70px]">
         <img src="/user.png" className="rounded-full h-[60px] w-[60px]" />
         <div className="flex gap-1 w-[125px] text-xl">
