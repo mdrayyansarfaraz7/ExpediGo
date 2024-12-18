@@ -6,6 +6,7 @@ import ExploreInternational from './components/ExploreInternational'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
 import NavBar from './components/NavBar'
+import ReviewSection from './components/ReviewSection'
 import TopDestinations from './components/TopDestinations'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
 <Customised/>
 <ExploreInternational/>
 <Advertisement/>
+<ReviewSection/>
 <Footer/>
 </>
   )
