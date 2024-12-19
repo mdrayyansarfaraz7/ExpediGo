@@ -15,14 +15,14 @@ function Explore() {
         price: 6999
     },
     {
-        destination: "Odisha",
-        url: "/Odisha.jpg",
+        destination: "Kolkata",
+        url: "/Kolkata.jpg",
         price: 4999
     },
     {
-        destination: "Kerela",
-        url: "/Kerala.jpg",
-        price: 9999
+        destination: "Assam",
+        url: "/Assam.jpg",
+        price: 5999
     }];
 
     return (

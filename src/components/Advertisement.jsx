@@ -15,7 +15,7 @@ function Advertisement() {
             </div>
 
         </div>
-        <div className='px-2'>
+        <div className='px-2 hidden lg:block xl:block 2xl:block'>
             <div className='flex justify-center items-center gap-4 flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row'>
                 <img src="/g1.jpg" alt="" className='md:w-[260px] w-[318px] h-[200px] rounded-md'/>
                 <img src="/g2.jpg" alt="" className='md:w-[260px] w-[318px] h-[200px] rounded-md'/>

@@ -5,13 +5,13 @@ import Btn from './Btn';
 function TopDestinations() {
 
     let ExploreData = [{
-        destination: "Ooty",
-        url: "/Ooty.jpg",
+        destination: "Himachal",
+        url: "/Himachal.jpg",
         price: 4399
     },
     {
-        destination: "Varkala",
-        url: "/Varkala.avif",
+        destination: "Silk Route",
+        url: "/silk.jpg",
         price: 5999
     },
     {
