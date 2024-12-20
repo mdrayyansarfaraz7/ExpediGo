@@ -6,12 +6,14 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Home from './pages/Home.jsx'
 import AboutUs from './pages/AboutUs.jsx'
 import ContactUs from './pages/ContactUs.jsx'
+import CallNow from './components/CallNow.jsx'
 
 const router=createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<App />}>
     <Route path="" element={<Home/>}/>
     <Route path="AboutUs" element={<AboutUs/>}/>
     <Route path="ContactUs" element={<ContactUs/>}/>
+    <Route path="call-now" element={<CallNow/>}/>
   </Route>
 ))
 
