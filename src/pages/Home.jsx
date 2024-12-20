@@ -10,11 +10,11 @@ import ReviewSection from '../components/ReviewSection'
 function Home() {
     return (
         <>
-            <Hero />
-            <Explore />
+             <Hero />
+            <Explore id="india" />
             <TopDestinations />
-            <Customised />
-            <ExploreInternational />
+            <Customised id="packages" />
+            <ExploreInternational id="international" />
             <Advertisement />
             <ReviewSection />
         </>

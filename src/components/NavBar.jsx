@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PiAirplaneTakeoff } from "react-icons/pi";
 import { IoIosMenu } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link, useLocation } from "react-router-dom"; 
 
 function NavBar() {
     let [mobView, setMobview] = useState(false);
@@ -10,6 +10,16 @@ function NavBar() {
     const HandelMobileView = () => {
         setMobview(!mobView);
     };
+    const { hash } = useLocation();
+
+    useEffect(() => {
+        if (hash) {
+          const targetElement = document.getElementById(hash.slice(1));
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      }, [hash]);
 
     return (
         <>

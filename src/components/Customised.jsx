@@ -46,7 +46,7 @@ function Customised() {
 
     return (
         <>
-            <div className='px-8 py-3 mt-5'>
+            <div className='px-8 py-3 mt-5 ' id="packages">
                 <div className='p-10 flex flex-col md:flex-row lg:flex-row gap-5 md:gap-2 items-center justify-between'>
                     <div>
                         <h1 className=' font-inter text-5xl font-semibold text-center md:text-left lg:text-left'>
