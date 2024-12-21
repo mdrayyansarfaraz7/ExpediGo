@@ -7,6 +7,7 @@ import Home from './pages/Home.jsx'
 import AboutUs from './pages/AboutUs.jsx'
 import ContactUs from './pages/ContactUs.jsx'
 import CallNow from './components/CallNow.jsx'
+import SeeAll from './pages/SeeAll.jsx'
 
 const router=createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<App />}>
@@ -14,6 +15,7 @@ const router=createBrowserRouter(createRoutesFromElements(
     <Route path="AboutUs" element={<AboutUs/>}/>
     <Route path="ContactUs" element={<ContactUs/>}/>
     <Route path="call-now" element={<CallNow/>}/>
+    <Route path="see-all" element={<SeeAll/>}/>
   </Route>
 ))
 
