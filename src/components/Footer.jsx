@@ -20,12 +20,12 @@ function Footer() {
                 </div>
 
                 {/* Responsive Grid for Footer Links */}
-                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 cursor-pointer'>
                     {/* Our Destinations */}
                     <div className='flex flex-col'>
                         <h1 className='font-inter text-lg font-semibold'>Our Destinations</h1>
                         <ul className='list-none text-slate-900 mt-4'>
-                            <li>Kerela</li>
+                            <li>Kolkata</li>
                             <li>Sikkim</li>
                             <li>Goa</li>
                             <li>Darjeeling</li>
@@ -33,7 +33,7 @@ function Footer() {
                     </div>
 
                     {/* Our Packages */}
-                    <div className='flex flex-col'>
+                    <div className='flex flex-col cursor-pointer'>
                         <h1 className='font-inter text-lg font-semibold'>Our Packages</h1>
                         <ul className='list-none text-slate-900 mt-4'>
                             <li>Honeymoon</li>
@@ -45,7 +45,7 @@ function Footer() {
 
                     {/* About Us */}
                     <div className='flex flex-col'>
-                        <h1 className='font-inter text-lg font-semibold'>About Us</h1>
+                        <h1 className='font-inter text-lg font-semibold cursor-pointer'>About Us</h1>
                         <ul className='list-none text-slate-900 mt-4'>
                             <li>Our Story</li>
                             <li>Work with us</li>
@@ -53,7 +53,7 @@ function Footer() {
                     </div>
 
                     {/* Contact Us */}
-                    <div className='flex flex-col'>
+                    <div className='flex flex-col cursor-pointer'>
                         <h1 className='font-inter text-lg font-semibold'>Contact Us</h1>
                         <ul className='list-none text-slate-900 mt-4'>
                             <li>12/2 Action Area 1, Newtown</li>
