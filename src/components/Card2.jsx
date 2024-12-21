@@ -3,9 +3,9 @@ import { FaMapMarkerAlt } from 'react-icons/fa'; // Importing location icon from
 
 const Card2 = ({ title, price, location, url }) => {
   return (
-    <div className="w-full sm:w-[350px] md:w-[400px] lg:w-[550px] mx-auto rounded-sm border border-gray-300 shadow-md p-4 bg-white sm:flex sm:items-center sm:gap-4">
+    <div className="w-full  md:w-[340px] lg:w-[400px] mx-auto rounded-sm border border-gray-300 shadow-md p-4 bg-white sm:flex sm:items-center sm:gap-4">
       {/* Image Section */}
-      <div className="mb-4 sm:mb-0 sm:w-full md:w-[180px] lg:w-[220px] sm:h-64">
+      <div className="mb-4 sm:mb-0 sm:w-full md:w-[180px] lg:w-[200px] sm:h-64">
         <img
           src={url}
           alt="Card"
@@ -16,11 +16,11 @@ const Card2 = ({ title, price, location, url }) => {
       <div className="sm:w-full md:w-[calc(100%-220px)] lg:w-[calc(100%-250px)]">
         <div className="text-4xl font-semibold mb-2 font-inter">{title}</div>
         <div className="text-2xl font-bold text-gray-800 mb-2 font-inter">INR {price}</div>
-        <div className="flex items-center text-gray-500 mb-4 font-inter">
+        <div className="flex items-center text-gray-500 mb-4 font-inter text-[12px]">
           <FaMapMarkerAlt className="mr-2" />
           {location}
         </div>
-        <button className="w-full md:w-[280px] bg-blue-500 text-white py-3 rounded-sm hover:bg-blue-600 transition mt-5">
+        <button className="w-full md:w-[100px] lg:w-[150px] bg-blue-500 text-white py-3 rounded-sm hover:bg-blue-600 transition mt-5">
           Enquire
         </button>
       </div>
