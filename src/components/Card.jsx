@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Card({ destination,url,price }) {
   return (
@@ -21,9 +22,12 @@ function Card({ destination,url,price }) {
 
             </div>
             <div className='flex justify-center items-center mt-2'>
-            <button className='bg-blue-600 text-white font-inter text-sm font-light rounded-sm w-[248px] h-[48px] '>
+              <Link to={`/call-now?location=${destination}`}>
+              <button className='bg-blue-600 text-white font-inter text-sm font-light rounded-sm w-[248px] h-[48px] '>
                 Enquire Now
             </button>
+              </Link>
+
             </div>
 
         </div>

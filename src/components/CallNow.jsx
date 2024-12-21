@@ -1,7 +1,13 @@
 import React from 'react';
 import { AiOutlineMail, AiOutlinePhone } from 'react-icons/ai';
+import { useSearchParams } from 'react-router-dom';
 
 const CallNow = () => {
+  const [searchParams] = useSearchParams();
+  const location = searchParams.get('location') || '';
+  const dates = searchParams.get('dates') || '';
+  const category = searchParams.get('category') || '';
+
   return (
     <div className="max-w-lg mb-10 mx-auto p-8 bg-white rounded-lg shadow-md text-gray-800 border border-gray-200">
       <h1 className="text-3xl font-bold font-montserrat text-center mb-8 text-gray-900">Enquire Now</h1>
@@ -14,37 +20,39 @@ const CallNow = () => {
           <select
             id="destination"
             name="destination"
+            defaultValue={location} // Pre-populate with location
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           >
+            <option value="" disabled>Select destination</option>
             <optgroup label="INTERNATIONAL">
-              <option value="bhutan">Bhutan</option>
-              <option value="nepal">Nepal</option>
-              <option value="thailand">Thailand</option>
-              <option value="vietnam">Vietnam</option>
-              <option value="baku">Baku, Azerbaijan</option>
-              <option value="dubai">Dubai</option>
+              <option value="Bhutan">Bhutan</option>
+              <option value="Nepal">Nepal</option>
+              <option value="Thailand">Thailand</option>
+              <option value="Vietnam">Vietnam</option>
+              <option value="Baku">Baku, Azerbaijan</option>
+              <option value="Dubai">Dubai</option>
             </optgroup>
             <optgroup label="INDIA">
-              <option value="sikkim">Sikkim</option>
-              <option value="assam">Assam</option>
-              <option value="arunachal">Arunachal Pradesh</option>
-              <option value="northeast">North-East India</option>
-              <option value="darjeeling">Darjeeling</option>
-              <option value="silkroute">Silk Route</option>
-              <option value="goa">Goa</option>
-              <option value="kolkata">Kolkata</option>
-              <option value="himachal">Himachal Pradesh</option>
-              <option value="uttarakhand">Uttarakhand</option>
+              <option value="Sikkim">Sikkim</option>
+              <option value="Assam">Assam</option>
+              <option value="Arunachal">Arunachal Pradesh</option>
+              <option value="NorthEast">North-East India</option>
+              <option value="Darjeeling">Darjeeling</option>
+              <option value="SilkRoute">Silk Route</option>
+              <option value="Goa">Goa</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Himachal">Himachal Pradesh</option>
+              <option value="Uttarakhand">Uttarakhand</option>
             </optgroup>
             <optgroup label="Customized Packages">
-              <option value="sundarban">Sundarban Mangroves</option>
-              <option value="shantiniketan">Shantiniketan</option>
-              <option value="darjeeling-custom">Darjeeling</option>
-              <option value="sikkim-custom">Sikkim</option>
-              <option value="northsouthgoa">North/South Goa</option>
-              <option value="guwahati">Guwahati, Assam</option>
-              <option value="northeast-custom">North-East India</option>
-              <option value="kolkata-custom">Kolkata</option>
+              <option value="Sundarban">Sundarban Mangroves</option>
+              <option value="Shantiniketan">Shantiniketan</option>
+              <option value="Darjeeling-custom">Darjeeling</option>
+              <option value="Sikkim-custom">Sikkim</option>
+              <option value="Northsouthgoa">North/South Goa</option>
+              <option value="Guwahati">Guwahati, Assam</option>
+              <option value="Northeast-custom">North-East India</option>
+              <option value="Kolkata-custom">Kolkata</option>
             </optgroup>
           </select>
         </div>
@@ -59,6 +67,7 @@ const CallNow = () => {
               type="date"
               id="from"
               name="from"
+              defaultValue={dates.split(',')[0] || ''} // Use first date from `dates`
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
             />
           </div>
@@ -70,6 +79,7 @@ const CallNow = () => {
               type="date"
               id="to"
               name="to"
+              defaultValue={dates.split(',')[1] || ''} // Use second date from `dates`
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
             />
           </div>
@@ -83,8 +93,10 @@ const CallNow = () => {
           <select
             id="type-of-trip"
             name="type-of-trip"
+            defaultValue={category} // Pre-populate with category
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           >
+            <option value="" disabled>Select destination</option>
             <option value="honeymoon">Honeymoon</option>
             <option value="family">Family</option>
             <option value="group-tour">Group Tour</option>
