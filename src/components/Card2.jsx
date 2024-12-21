@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa'; // Importing location icon from react-icons
+import { Link } from 'react-router-dom';
 
 const Card2 = ({ title, price, location, url }) => {
   return (
@@ -20,9 +21,12 @@ const Card2 = ({ title, price, location, url }) => {
           <FaMapMarkerAlt className="mr-2" />
           {location}
         </div>
+        <Link to={`/call-now?location=${title}`}>
         <button className="w-full md:w-[100px] lg:w-[150px] bg-blue-500 text-white py-3 rounded-sm hover:bg-blue-600 transition mt-5">
           Enquire
         </button>
+        </Link>
+
       </div>
     </div>
   );
