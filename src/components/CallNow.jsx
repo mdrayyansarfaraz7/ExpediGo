@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { AiOutlineMail, AiOutlinePhone } from 'react-icons/ai';
 import { useSearchParams } from 'react-router-dom';
 
@@ -97,10 +97,10 @@ const CallNow = () => {
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           >
             <option value="" disabled>Select destination</option>
-            <option value="honeymoon">Honeymoon</option>
-            <option value="family">Family</option>
-            <option value="group-tour">Group Tour</option>
-            <option value="solo">Solo</option>
+            <option value="Honeymoon">Honeymoon</option>
+            <option value="Family">Family</option>
+            <option value="Group">Group Tour</option>
+            <option value="Solo">Solo</option>
           </select>
         </div>
 

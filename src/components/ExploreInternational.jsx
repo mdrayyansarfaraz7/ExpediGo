@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Btn from './Btn';
 import Card from './Card';
 import { Link } from 'react-router-dom';

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+
 import { MdOutlineTurnRight } from "react-icons/md";
 import { ImLocation } from "react-icons/im";
 import { FaRegCalendar } from "react-icons/fa6";
 import { TbMountainFilled } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Hero() {
   const navigate = useNavigate();

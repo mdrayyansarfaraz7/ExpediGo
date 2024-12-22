@@ -1,8 +1,9 @@
-import React from 'react';
+
 import { FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
+import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
@@ -25,10 +26,10 @@ function Footer() {
                     <div className='flex flex-col'>
                         <h1 className='font-inter text-lg font-semibold'>Our Destinations</h1>
                         <ul className='list-none text-slate-900 mt-4'>
-                            <li>Kolkata</li>
-                            <li>Sikkim</li>
-                            <li>Goa</li>
-                            <li>Darjeeling</li>
+                            <Link to={'/call-now?location=Kolkata'}> <li>Kolkata</li></Link>
+                            <Link to={'/call-now?location=Sikkim'}><li>Sikkim</li></Link>
+                            <Link to={'/call-now?location=Goa'}><li>Goa</li></Link>
+                            <Link to={'/call-now?location=Darjeeling'}><li>Darjeeling</li></Link>
                         </ul>
                     </div>
 
@@ -36,10 +37,10 @@ function Footer() {
                     <div className='flex flex-col cursor-pointer'>
                         <h1 className='font-inter text-lg font-semibold'>Our Packages</h1>
                         <ul className='list-none text-slate-900 mt-4'>
-                            <li>Honeymoon</li>
-                            <li>Family</li>
-                            <li>Group tour</li>
-                            <li>Solo</li>
+                        <Link to={'/call-now?category=Honeymoon'}><li>Honeymoon</li></Link>
+                        <Link to={'/call-now?category=Family'}><li>Family</li></Link>
+                        <Link to={'/call-now?category=Group'}><li>Group tour</li></Link>
+                        <Link to={'/call-now?category=Solo'}> <li>Solo</li></Link>
                         </ul>
                     </div>
 

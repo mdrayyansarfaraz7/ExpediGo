@@ -11,10 +11,10 @@ function Home() {
     return (
         <>
              <Hero />
-            <Explore id="india" />
+            <Explore  />
             <TopDestinations />
-            <Customised id="packages" />
-            <ExploreInternational id="international" />
+            <Customised  />
+            <ExploreInternational  />
             <Advertisement />
             <ReviewSection />
         </>
