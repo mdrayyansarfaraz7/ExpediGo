@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Link } from 'react-router-dom'
 
 function Advertisement() {
@@ -11,7 +11,7 @@ function Advertisement() {
             <p className='text-sm text-slate-900 p-2 font-inter'>Book any package from 10th Nov to 10 Dec and get flat INR 1000 off on flight booking</p>
             <div className='flex justify-center items-center'>
                 <Link to={'/call-now'}>
-                <button className='w-[500px] h-[48px] bg-white text-sm font-inter font-light mt-28 sm:mt-28 md:mt-44  lg:mt-48 xl:mt-48 2xl:mt-48 p-2'>
+                <button className=' w-[240px] lg:w-[500px] h-[48px] bg-white text-sm font-inter font-light mt-28 sm:mt-28 md:mt-44  lg:mt-48 xl:mt-48 2xl:mt-48 p-2'>
                 Call now
             </button>
                 </Link>
