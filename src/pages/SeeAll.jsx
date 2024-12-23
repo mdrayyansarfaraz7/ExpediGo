@@ -1,45 +1,41 @@
-import React from 'react';
+import  { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import axios from 'axios';
 import Card2 from '../components/Card2';
 
 function SeeAll() {
+  const [data, setData] = useState([]);
+  const [searchParams] = useSearchParams(); 
+
+  useEffect(() => {
+    const category = searchParams.get('cat');
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/${category}`);
+        setData(response.data); 
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    if (category) {
+      fetchData(); 
+    }
+  }, [searchParams]);
+
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 p-4">
-      <Card2
-        title="Dubai"
-        price="9999"
-        location="Al Fahidi - Dubai - United Arab Emirates"
-        url="/Dubai.jpg"
-      />
-      <Card2
-        title="Vietnam"
-        price="7999"
-        location="Hạ Long, Vietnam"
-        url="/vietnam.jpeg"
-      />
-      <Card2
-        title="Bhutan"
-        price="4999"
-        location="Thimphu, Bhutan"
-        url="/bhutan.avif"
-      />
-      <Card2
-        title="Thailand"
-        price="6999"
-        location="Bangkok, Thailand"
-        url="/Thailand.avif"
-      />
-      <Card2
-        title="Baku"
-        price="8999"
-        location="Baku, Azerbaijan"
-        url="/baku.avif"
-      />
-      <Card2
-        title="Nepal"
-        price="3999"
-        location="Annapurna, Narchyang, Nepal"
-        url="/nepal.avif"
-      />
+      {data.map((item, index) => (
+        <Card2
+          key={index}
+          title={item.destination}
+          price={item.price}
+          location={item.location}
+          url={item.url}
+        />
+      ))}
     </div>
   );
 }

@@ -1,4 +1,5 @@
-import React from 'react'
+
+import { Link } from 'react-router-dom';
 import Btn from './Btn'
 import Card from './Card';
 
@@ -38,7 +39,10 @@ function Explore() {
                         Going somewhere to celebrate this season? Whether you’re going home or somewhere to roam, we’ve got the travel tools to get you to your destination.
                     </p>
                 </div>
+                <Link to={'/see-all?cat=india'}>
                 <Btn />
+                </Link>
+                
             </div>
         </div>
         <div className="flex flex-wrap gap-12 justify-center ">

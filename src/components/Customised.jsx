@@ -1,6 +1,7 @@
-import React from 'react'
+
 import Btn from './Btn'
 import Token from './Token'
+import { Link } from 'react-router-dom';
 
 function Customised() {
     let Packages = [{
@@ -53,7 +54,9 @@ function Customised() {
                             Explore Customized Packages
                         </h1>
                     </div>
-                    <Btn />
+                <Link to={'/see-all?cat=packages'}>
+                <Btn />
+                </Link>
                 </div>
             </div>
             

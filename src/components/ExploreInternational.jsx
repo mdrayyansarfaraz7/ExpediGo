@@ -39,7 +39,7 @@ function ExploreInternational() {
                     Going somewhere to celebrate this season? Whether you’re going home or somewhere to roam, we’ve got the travel tools to get you to your destination.
                     </p>
                 </div>
-                <Link to={'/see-all'}>
+                <Link to={'/see-all?cat=international'}>
                 <Btn />
                 </Link>
                
