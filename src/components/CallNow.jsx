@@ -1,29 +1,85 @@
-
+import { useState } from 'react';
 import { AiOutlineMail, AiOutlinePhone } from 'react-icons/ai';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import axios from 'axios';
 
 const CallNow = () => {
+  const [formData, setFormData] = useState({
+    destination: '',
+    from: '',
+    to: '',
+    typeOfTrip: '',
+    email: '',
+    phone: '',
+  });
+
   const [searchParams] = useSearchParams();
   const location = searchParams.get('location') || '';
   const dates = searchParams.get('dates') || '';
   const category = searchParams.get('category') || '';
 
+  // Pre-fill formData with searchParams
+  useState(() => {
+    setFormData((prev) => ({
+      ...prev,
+      destination: location,
+      from: dates.split(',')[0] || '',
+      to: dates.split(',')[1] || '',
+      typeOfTrip: category,
+    }));
+  }, [location, dates, category]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        'http://localhost:8080/enquire',
+        formData
+      );
+
+      if (response.status === 200) {
+        alert('Thank you for reaching out, your details are submitted successfully!We will contact you shortly!');
+        navigate('/');
+      } else {
+        alert('Failed to submit form. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('An error occurred. Please try again.');
+    }
+  };
+
   return (
     <div className="max-w-lg mb-10 mx-auto p-8 bg-white rounded-lg shadow-md text-gray-800 border border-gray-200">
       <h1 className="text-3xl font-bold font-montserrat text-center mb-8 text-gray-900">Enquire Now</h1>
-      <form className="space-y-6">
+      <form className="space-y-6" onSubmit={handleSubmit}>
         {/* Destination */}
         <div>
-          <label htmlFor="destination" className="block font-montserrat text-sm font-medium mb-2 text-gray-700">
-            Destination
+          <label
+            htmlFor="destination"
+            className="block font-montserrat text-sm font-medium mb-2 text-gray-700"
+          >
+            Destination <span className="text-red-500">*</span>
           </label>
           <select
             id="destination"
             name="destination"
-            defaultValue={location} // Pre-populate with location
+            value={formData.destination}
+            onChange={handleChange}
+            required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           >
-            <option value="" disabled>Select destination</option>
+            <option value="" disabled>
+              Select destination
+            </option>
             <optgroup label="INTERNATIONAL">
               <option value="Bhutan">Bhutan</option>
               <option value="Nepal">Nepal</option>
@@ -60,26 +116,36 @@ const CallNow = () => {
         {/* Duration */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label htmlFor="from" className="block font-montserrat text-sm font-medium mb-2 text-gray-700">
-              From
+            <label
+              htmlFor="from"
+              className="block font-montserrat text-sm font-medium mb-2 text-gray-700"
+            >
+              From <span className="text-red-500">*</span>
             </label>
             <input
               type="date"
               id="from"
               name="from"
-              defaultValue={dates.split(',')[0] || ''} // Use first date from `dates`
+              value={formData.from}
+              onChange={handleChange}
+              required
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
             />
           </div>
           <div>
-            <label htmlFor="to" className="block font-montserrat text-sm font-medium mb-2 text-gray-700">
-              To
+            <label
+              htmlFor="to"
+              className="block font-montserrat text-sm font-medium mb-2 text-gray-700"
+            >
+              To <span className="text-red-500">*</span>
             </label>
             <input
               type="date"
               id="to"
               name="to"
-              defaultValue={dates.split(',')[1] || ''} // Use second date from `dates`
+              value={formData.to}
+              onChange={handleChange}
+              required
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
             />
           </div>
@@ -87,16 +153,23 @@ const CallNow = () => {
 
         {/* Type of Trip */}
         <div>
-          <label htmlFor="type-of-trip" className="block font-montserrat text-sm font-medium mb-2 text-gray-700">
-            Type of Trip
+          <label
+            htmlFor="type-of-trip"
+            className="block font-montserrat text-sm font-medium mb-2 text-gray-700"
+          >
+            Type of Trip <span className="text-red-500">*</span>
           </label>
           <select
             id="type-of-trip"
-            name="type-of-trip"
-            defaultValue={category} // Pre-populate with category
+            name="typeOfTrip"
+            value={formData.typeOfTrip}
+            onChange={handleChange}
+            required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           >
-            <option value="" disabled>Select destination</option>
+            <option value="" disabled>
+              Select type of trip
+            </option>
             <option value="Honeymoon">Honeymoon</option>
             <option value="Family">Family</option>
             <option value="Group">Group Tour</option>
@@ -106,8 +179,11 @@ const CallNow = () => {
 
         {/* Email ID */}
         <div>
-          <label htmlFor="email" className="block font-montserrat text-sm font-medium mb-2 text-gray-700">
-            Email ID
+          <label
+            htmlFor="email"
+            className="block font-montserrat text-sm font-medium mb-2 text-gray-700"
+          >
+            Email ID <span className="text-red-500">*</span>
           </label>
           <div className="relative">
             <AiOutlineMail className="absolute top-3 left-3 text-gray-500" />
@@ -115,6 +191,9 @@ const CallNow = () => {
               type="email"
               id="email"
               name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
               placeholder="Enter your email"
               className="w-full pl-10 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
             />
@@ -123,8 +202,11 @@ const CallNow = () => {
 
         {/* Phone Number */}
         <div>
-          <label htmlFor="phone" className="block font-montserrat text-sm font-medium mb-2 text-gray-700">
-            Phone Number
+          <label
+            htmlFor="phone"
+            className="block font-montserrat text-sm font-medium mb-2 text-gray-700"
+          >
+            Phone Number <span className="text-red-500">*</span>
           </label>
           <div className="relative">
             <AiOutlinePhone className="absolute top-3 left-3 text-gray-500" />
@@ -132,6 +214,9 @@ const CallNow = () => {
               type="tel"
               id="phone"
               name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
               placeholder="Enter your phone number"
               className="w-full pl-10 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
             />
