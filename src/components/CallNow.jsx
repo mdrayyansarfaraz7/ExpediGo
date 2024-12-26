@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { AiOutlineMail, AiOutlinePhone } from 'react-icons/ai';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
+import ClipLoader from 'react-spinners/ClipLoader'; // Import ClipLoader
 
 const CallNow = () => {
   const [formData, setFormData] = useState({
-    name: '', // Add the name field here
+    name: '',
     destination: '',
     from: '',
     to: '',
@@ -13,6 +14,8 @@ const CallNow = () => {
     email: '',
     phone: '',
   });
+  
+  const [isLoading, setIsLoading] = useState(false); // State for loading
 
   const [searchParams] = useSearchParams();
   const location = searchParams.get('location') || '';
@@ -37,11 +40,13 @@ const CallNow = () => {
       [name]: value,
     }));
   };
-  
+
   const navigate = useNavigate();
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Start the loading spinner
+
     try {
       const response = await axios.post(
         'http://localhost:8080/enquire',
@@ -57,6 +62,8 @@ const CallNow = () => {
     } catch (error) {
       console.error('Error submitting form:', error);
       alert('An error occurred. Please try again.');
+    } finally {
+      setIsLoading(false); // Stop the loading spinner
     }
   };
 
@@ -100,9 +107,7 @@ const CallNow = () => {
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           >
-            <option value="" disabled>
-              Select destination
-            </option>
+            <option value="" disabled>Select destination</option>
             <optgroup label="INTERNATIONAL">
               <option value="Bhutan">Bhutan</option>
               <option value="Nepal">Nepal</option>
@@ -190,9 +195,7 @@ const CallNow = () => {
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           >
-            <option value="" disabled>
-              Select type of trip
-            </option>
+            <option value="" disabled>Select type of trip</option>
             <option value="Honeymoon">Honeymoon</option>
             <option value="Family">Family</option>
             <option value="Group">Group Tour</option>
@@ -250,9 +253,14 @@ const CallNow = () => {
         <div>
           <button
             type="submit"
-            className="w-full py-3 px-6 bg-blue-600 text-white font-montserrat font-semibold rounded-md hover:bg-blue-700 transition duration-300"
+            disabled={isLoading} // Disable button while loading
+            className={`w-full py-3 px-6 ${isLoading ? 'bg-blue-900' : 'bg-blue-600'} text-white font-montserrat font-semibold rounded-md hover:bg-blue-700 transition duration-300`}
           >
-            Submit
+            {isLoading ? (
+              <ClipLoader color="#ffffff" loading={isLoading} size={24} /> // Show ClipLoader during loading
+            ) : (
+              'Submit'
+            )}
           </button>
         </div>
       </form>
