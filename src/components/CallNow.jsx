@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { AiOutlineMail, AiOutlinePhone } from 'react-icons/ai';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
-import ClipLoader from 'react-spinners/ClipLoader'; // Import ClipLoader
+import ClipLoader from 'react-spinners/ClipLoader';
 
 const CallNow = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    name: '', // Add the name field here
     destination: '',
     from: '',
     to: '',
@@ -14,8 +14,8 @@ const CallNow = () => {
     email: '',
     phone: '',
   });
-  
-  const [isLoading, setIsLoading] = useState(false); // State for loading
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [searchParams] = useSearchParams();
   const location = searchParams.get('location') || '';
@@ -45,7 +45,7 @@ const CallNow = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true); // Start the loading spinner
+    setIsSubmitting(true);  // Show the loading state
 
     try {
       const response = await axios.post(
@@ -63,12 +63,19 @@ const CallNow = () => {
       console.error('Error submitting form:', error);
       alert('An error occurred. Please try again.');
     } finally {
-      setIsLoading(false); // Stop the loading spinner
+      setIsSubmitting(false);  // Hide the loading state
     }
   };
 
   return (
-    <div className="max-w-lg mb-10 mx-auto p-8 bg-white rounded-lg shadow-md text-gray-800 border border-gray-200">
+    <div className="relative max-w-lg mb-10 mx-auto p-8 bg-white rounded-lg shadow-md text-gray-800 border border-gray-200">
+      {/* Loading Overlay */}
+      {isSubmitting && (
+        <div className="absolute inset-0 bg-slate-300 bg-opacity-50 flex items-center justify-center z-10">
+          <ClipLoader color="#ffffff" size={50} />
+        </div>
+      )}
+
       <h1 className="text-3xl font-bold font-montserrat text-center mb-8 text-gray-900">Enquire Now</h1>
       <form className="space-y-6" onSubmit={handleSubmit}>
         {/* Your Name */}
@@ -107,7 +114,9 @@ const CallNow = () => {
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           >
-            <option value="" disabled>Select destination</option>
+            <option value="" disabled>
+              Select destination
+            </option>
             <optgroup label="INTERNATIONAL">
               <option value="Bhutan">Bhutan</option>
               <option value="Nepal">Nepal</option>
@@ -195,7 +204,9 @@ const CallNow = () => {
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           >
-            <option value="" disabled>Select type of trip</option>
+            <option value="" disabled>
+              Select type of trip
+            </option>
             <option value="Honeymoon">Honeymoon</option>
             <option value="Family">Family</option>
             <option value="Group">Group Tour</option>
@@ -253,13 +264,15 @@ const CallNow = () => {
         <div>
           <button
             type="submit"
-            disabled={isLoading} // Disable button while loading
-            className={`w-full py-3 px-6 ${isLoading ? 'bg-blue-900' : 'bg-blue-600'} text-white font-montserrat font-semibold rounded-md hover:bg-blue-700 transition duration-300`}
+            className="w-full py-3 px-6 bg-blue-600 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+            disabled={isSubmitting}
           >
-            {isLoading ? (
-              <ClipLoader color="#ffffff" loading={isLoading} size={24} /> // Show ClipLoader during loading
+            {isSubmitting ? (
+              <span className="flex justify-center items-center">
+                <ClipLoader color="#ffffff" size={20} />
+              </span>
             ) : (
-              'Submit'
+              'Enquire Now'
             )}
           </button>
         </div>
