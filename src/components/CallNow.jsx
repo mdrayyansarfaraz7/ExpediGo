@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const CallNow = () => {
   const [formData, setFormData] = useState({
+    name: '', // Add the name field here
     destination: '',
     from: '',
     to: '',
@@ -36,7 +37,9 @@ const CallNow = () => {
       [name]: value,
     }));
   };
+  
   const navigate = useNavigate();
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -46,7 +49,7 @@ const CallNow = () => {
       );
 
       if (response.status === 200) {
-        alert('Thank you for reaching out, your details are submitted successfully!We will contact you shortly!');
+        alert('Thank you for reaching out, your details are submitted successfully! We will contact you shortly!');
         navigate('/');
       } else {
         alert('Failed to submit form. Please try again.');
@@ -61,6 +64,26 @@ const CallNow = () => {
     <div className="max-w-lg mb-10 mx-auto p-8 bg-white rounded-lg shadow-md text-gray-800 border border-gray-200">
       <h1 className="text-3xl font-bold font-montserrat text-center mb-8 text-gray-900">Enquire Now</h1>
       <form className="space-y-6" onSubmit={handleSubmit}>
+        {/* Your Name */}
+        <div>
+          <label
+            htmlFor="name"
+            className="block font-montserrat text-sm font-medium mb-2 text-gray-700"
+          >
+            Your Name <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            placeholder="Enter your name"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+          />
+        </div>
+
         {/* Destination */}
         <div>
           <label
