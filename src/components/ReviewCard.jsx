@@ -10,7 +10,7 @@ function ReviewCard({ content, stars, user, occ }) {
     <div className="h-auto w-full max-w-[372px] p-5 sm:p-8 bg-white shadow-lg rounded-lg">
       <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
         <img
-          src="/user.png"
+          src="/user3.png"
           alt="User"
           className="rounded-full h-[60px] w-[60px] sm:h-[70px] sm:w-[70px] mb-3 sm:mb-0"
         />

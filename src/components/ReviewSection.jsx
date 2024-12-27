@@ -1,4 +1,4 @@
-import React from "react";
+
 import ReviewCard from "./ReviewCard";
 import Slider from "react-slick"; // Import react-slick for the carousel
 
@@ -7,38 +7,38 @@ function ReviewSection() {
     {
       content: "The product exceeded my expectations! The quality is top-notch, and I would highly recommend it to everyone.",
       stars: 5,
-      user: "Ishan Dutta",
-      occ: "Software Engineer",
+      user: "Diya Kaul",
+      occ: "Teacher",
     },
     {
       content: "Good experience overall. There were minor delays, but the team was very professional and responsive.",
       stars: 4,
-      user: "Naman Jaiswal",
-      occ: "Project Manager",
+      user: "Naman Trivaidi",
+      occ: "Manager",
     },
     {
-      content: "Average service. It was okay, but there is definitely room for improvement in the process.",
-      stars: 3,
-      user: "Sam Wilson",
-      occ: "Freelancer",
+      content: "Good service. It was a joyful trip.You can Go ahead with them",
+      stars: 4,
+      user: "Yash Soni",
+      occ: "Business Man",
     },
     {
       content: "Happy with the experience. Customer support was helpful, but it took too long to resolve my issue.",
-      stars: 3,
-      user: "Zain Khalid",
-      occ: "Graphic Designer",
+      stars: 5,
+      user: "Zaan Ali",
+      occ: "Designer",
     },
     {
       content: "Decent service.",
       stars: 3,
-      user: "Aqsa Naaz",
+      user: "Naaz",
       occ: "Entrepreneur",
     },
     {
       content: "Absolutely amazing! Everything went smoothly, and I was extremely satisfied with the result.",
       stars: 5,
-      user: "Amit Mahajan",
-      occ: "Marketing Specialist",
+      user: "Amit Mansuri",
+      occ: "Teacher",
     },
   ];
 
@@ -66,13 +66,13 @@ function ReviewSection() {
       {
         breakpoint: 1024, // lg screens
         settings: {
-          slidesToShow: 2, // Show 2 cards
+          slidesToShow: 2, 
         },
       },
       {
-        breakpoint: 768, // md screens
+        breakpoint: 768, 
         settings: {
-          slidesToShow: 1, // Show 1 card
+          slidesToShow: 1, 
         },
       },
     ],
