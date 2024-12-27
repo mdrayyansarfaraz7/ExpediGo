@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { PiAirplaneTakeoff } from "react-icons/pi";
 import { IoIosMenu } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
@@ -70,7 +70,7 @@ function NavBar() {
                     mobView ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
                 }`}
             >
-                <ul className="flex flex-col gap-4 items-center list-none p-6">
+                <ul className="flex flex-col gap-4 items-center list-none p-6 ">
                     <Link to="/#india" className="text-lg font-inter font-medium">
                         India
                     </Link>

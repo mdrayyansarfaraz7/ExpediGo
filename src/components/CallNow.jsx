@@ -72,7 +72,7 @@ const CallNow = () => {
       {/* Loading Overlay */}
       {isSubmitting && (
         <div className="absolute inset-0 bg-slate-300 bg-opacity-50 flex items-center justify-center z-10">
-          <ClipLoader color="#ffffff" size={50} />
+          <ClipLoader color="#4169E1" size={50} />
         </div>
       )}
 
