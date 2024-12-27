@@ -1,6 +1,8 @@
-import React from 'react';
 import { ImLocation } from 'react-icons/im';
 import { MdEmail, MdPhone } from 'react-icons/md';
+import { FaFacebookF } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { RiInstagramFill } from 'react-icons/ri';
 
 function ContactUs() {
   return (
@@ -28,7 +30,7 @@ function ContactUs() {
             </div>
             <div>
               <h3 className="font-inter font-bold text-xl">Email Address</h3>
-              <p className="font-Montserrat text-base">expedigo.travels@gmail.com</p>
+              <p className="font-Montserrat text-base">expedigoholidays@gmail.com</p>
             </div>
           </div>
 
@@ -39,7 +41,42 @@ function ContactUs() {
             </div>
             <div>
               <h3 className="font-inter font-bold text-xl">Phone Number</h3>
-              <p className="font-Montserrat text-base">+91 89533 55781</p>
+              <p className="font-Montserrat text-base">+91 9007016011</p>
+            </div>
+          </div>
+          <hr className="w-full border-t-1 border-gray-700"/>
+          <h1 className="text-5xl font-inter font-bold text-center md:text-left  mt-1">Follow Us</h1>
+          {/* Social Media Section */}
+          <div className="flex items-center gap-4">
+            <div className="p-4 rounded-full bg-amber-400">
+              <FaFacebookF className="text-2xl" />
+            </div>
+            <div>
+             
+              <p className="font-Montserrat text-base">
+                <Link
+                  to="https://www.facebook.com/profile.php?id=61554390507137"
+                  className="text-black hover:underline"
+                >
+                   <h3 className="font-inter font-bold text-xl">Facebook</h3>
+                </Link>
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <div className="p-4 rounded-full bg-amber-400">
+              <RiInstagramFill className="text-2xl" />
+            </div>
+            <div>
+              <p className="font-Montserrat text-base">
+                <Link
+                  to="https://www.instagram.com/expedigoholidays/"
+                  className="text-black hover:underline"
+                >
+              <h3 className="font-inter font-bold text-xl">Instagram</h3>
+                </Link>
+              </p>
             </div>
           </div>
         </div>
