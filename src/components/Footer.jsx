@@ -1,7 +1,6 @@
 
 import { FaFacebook } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
+
 import { RiInstagramFill } from "react-icons/ri";
 import { Link} from 'react-router-dom';
 
@@ -13,10 +12,13 @@ function Footer() {
                 <div className='flex flex-col items-center'>
                     <img src="/ExpediGo.png" className='w-[135px] h-[135px] rounded-full' />
                     <div className='flex items-center justify-evenly gap-2 mt-4'>
+                        <p className="font-inter">Follow Us: </p> 
+                        <Link to={'https://www.facebook.com/profile.php?id=61554390507137'}>
                         <FaFacebook className='text-lg' />
-                        <FaTwitter className='text-lg' />
-                        <FaYoutube className='text-lg' />
+                        </Link>
+                        <Link to={'https://www.instagram.com/expedigoholidays/'}>
                         <RiInstagramFill className='text-lg' />
+                        </Link>
                     </div>
                 </div>
 
@@ -62,7 +64,7 @@ function Footer() {
                         </Link>
                         <ul className='list-none text-slate-900 mt-4'>
                             <li>12/2 Action Area 1, Newtown</li>
-                            <li>+91 89533 55781</li>
+                            <li>+91 9007016011</li>
                         </ul>
                     </div>
                 </div>
