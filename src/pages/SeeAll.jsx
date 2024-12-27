@@ -16,7 +16,7 @@ function SeeAll() {
       try {
        
         setLoading(true); 
-        const response = await axios.get(`http://localhost:8080/${category}`);
+        const response = await axios.get(`https://expedigo-backend.onrender.com/${category}`);
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);

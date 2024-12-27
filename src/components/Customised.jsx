@@ -13,7 +13,7 @@ function Customised() {
     const fetchPackages = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:8080/packages');
+        const response = await axios.get('https://expedigo-backend.onrender.com/packages');
         setPackages(response.data);
       } catch (error) {
         console.error('Error fetching packages:', error);

@@ -13,7 +13,7 @@ function TopDestinations() {
     const fetchExploreData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:8080/india');
+        const response = await axios.get('https://expedigo-backend.onrender.com/india');
         const data = response.data;
         
         // Assuming the response data is an array and you want the last 4 items

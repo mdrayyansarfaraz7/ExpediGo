@@ -12,7 +12,7 @@ function ExploreInternational() {
         const fetchData = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`http://localhost:8080/international`);
+                const response = await axios.get(`https://expedigo-backend.onrender.com/international`);
                 setExploreData(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
