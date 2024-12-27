@@ -3,7 +3,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 function Footer() {
     return (
@@ -48,14 +48,18 @@ function Footer() {
                     <div className='flex flex-col'>
                         <h1 className='font-inter text-lg font-semibold cursor-pointer'>About Us</h1>
                         <ul className='list-none text-slate-900 mt-4'>
+                            <Link to={'/AboutUs'}>
                             <li>Our Story</li>
-                            <li>Work with us</li>
+                            </Link>
+                          
                         </ul>
                     </div>
 
                     {/* Contact Us */}
                     <div className='flex flex-col cursor-pointer'>
+                        <Link to={'/ContactUs'}>
                         <h1 className='font-inter text-lg font-semibold'>Contact Us</h1>
+                        </Link>
                         <ul className='list-none text-slate-900 mt-4'>
                             <li>12/2 Action Area 1, Newtown</li>
                             <li>+91 89533 55781</li>

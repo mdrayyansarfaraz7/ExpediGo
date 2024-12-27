@@ -6,7 +6,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 
 const CallNow = () => {
   const [formData, setFormData] = useState({
-    name: '', // Add the name field here
+    name: '', 
     destination: '',
     from: '',
     to: '',
