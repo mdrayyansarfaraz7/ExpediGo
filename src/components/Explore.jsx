@@ -8,7 +8,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 function Explore() {
   const [ExploreData, setExploreData] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,7 +22,20 @@ function Explore() {
       }
     };
     fetchData();
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+  };
+
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const getSliceIndex = () => {
+    if (screenWidth >= 1000 && screenWidth <= 1260) {
+        return 3;
+    }
+    return 4; 
+};
 
   return (
     <>
@@ -48,10 +61,10 @@ function Explore() {
         </div>
       ) : (
         <div className="flex flex-wrap gap-12 justify-center">
-          {ExploreData.slice(0, 4).map((item, index) => (
+        {ExploreData.slice(0, getSliceIndex()).map((item, index) => (
             <Card key={index} destination={item.destination} url={item.url} price={item.price} />
-          ))}
-        </div>
+        ))}
+    </div>
       )}
     </>
   );

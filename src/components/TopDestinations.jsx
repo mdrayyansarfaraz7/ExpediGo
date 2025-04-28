@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 function TopDestinations() {
   const [ExploreData, setExploreData] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   useEffect(() => {
     const fetchExploreData = async () => {
       try {
@@ -27,7 +27,20 @@ function TopDestinations() {
     };
 
     fetchExploreData();
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+  };
+
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const getSliceIndex = () => {
+    if (screenWidth >= 1000 && screenWidth <= 1260) {
+        return 3;
+    }
+    return 4; 
+};
 
   return (
     <>
@@ -53,10 +66,10 @@ function TopDestinations() {
         </div>
       ) : (
         <div className="flex flex-wrap gap-12 justify-center">
-          {ExploreData.map((item, index) => (
+        {ExploreData.slice(0, getSliceIndex()).map((item, index) => (
             <Card key={index} destination={item.destination} url={item.url} price={item.price} />
-          ))}
-        </div>
+        ))}
+    </div>
       )}
     </>
   );
