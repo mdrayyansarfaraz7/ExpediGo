@@ -70,7 +70,6 @@ function Footer() {
                     </div>
                 </div>
             </div>
-
             {/* Small Blue Footer with Copyright and Developer Info */}
             <div className='w-full bg-blue-600 py-2 text-white'>
                 <div className='flex justify-between items-center px-2'>

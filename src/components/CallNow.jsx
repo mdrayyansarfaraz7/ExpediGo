@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AiOutlineMail, AiOutlinePhone } from 'react-icons/ai';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
@@ -6,8 +6,9 @@ import ClipLoader from 'react-spinners/ClipLoader';
 
 const CallNow = () => {
   const [formData, setFormData] = useState({
-    name: '', 
+    name: '',
     destination: '',
+    customDestination: '',
     from: '',
     to: '',
     typeOfTrip: '',
@@ -16,14 +17,16 @@ const CallNow = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isOtherDestination, setIsOtherDestination] = useState(false);
 
   const [searchParams] = useSearchParams();
   const location = searchParams.get('location') || '';
   const dates = searchParams.get('dates') || '';
   const category = searchParams.get('category') || '';
 
-  // Pre-fill formData with searchParams
-  useState(() => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
     setFormData((prev) => ({
       ...prev,
       destination: location,
@@ -39,18 +42,29 @@ const CallNow = () => {
       ...prev,
       [name]: value,
     }));
-  };
 
-  const navigate = useNavigate();
+    if (name === 'destination') {
+      if (value === 'Others') {
+        setIsOtherDestination(true);
+      } else {
+        setIsOtherDestination(false);
+      }
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);  // Show the loading state
+    setIsSubmitting(true);
 
+    const payload = {
+      ...formData,
+      destination: formData.destination === 'Others' ? formData.customDestination : formData.destination,
+    };
+    console.log(payload);
     try {
       const response = await axios.post(
-        'https://expedigo-backend.onrender.com/enquire',
-        formData
+        'http://localhost:8080/enquire',
+        payload
       );
 
       if (response.status === 200) {
@@ -63,13 +77,12 @@ const CallNow = () => {
       console.error('Error submitting form:', error);
       alert('An error occurred. Please try again.');
     } finally {
-      setIsSubmitting(false);  // Hide the loading state
+      setIsSubmitting(false);
     }
   };
 
   return (
     <div className="relative max-w-lg mb-10 mx-auto p-8 bg-white rounded-lg shadow-md text-gray-800 border border-gray-200">
-      {/* Loading Overlay */}
       {isSubmitting && (
         <div className="absolute inset-0 bg-slate-300 bg-opacity-50 flex items-center justify-center z-10">
           <ClipLoader color="#4169E1" size={50} />
@@ -78,12 +91,9 @@ const CallNow = () => {
 
       <h1 className="text-3xl font-bold font-montserrat text-center mb-8 text-gray-900">Enquire Now</h1>
       <form className="space-y-6" onSubmit={handleSubmit}>
-        {/* Your Name */}
+        {/* Name */}
         <div>
-          <label
-            htmlFor="name"
-            className="block font-montserrat text-sm font-medium mb-2 text-gray-700"
-          >
+          <label htmlFor="name" className="block font-montserrat text-sm font-medium mb-2 text-gray-700">
             Your Name <span className="text-red-500">*</span>
           </label>
           <input
@@ -100,10 +110,7 @@ const CallNow = () => {
 
         {/* Destination */}
         <div>
-          <label
-            htmlFor="destination"
-            className="block font-montserrat text-sm font-medium mb-2 text-gray-700"
-          >
+          <label htmlFor="destination" className="block font-montserrat text-sm font-medium mb-2 text-gray-700">
             Destination <span className="text-red-500">*</span>
           </label>
           <select
@@ -147,17 +154,27 @@ const CallNow = () => {
               <option value="Northeast-custom">North-East India</option>
               <option value="Kolkata-custom">Kolkata</option>
             </optgroup>
+            <option value="Others">Others</option>
           </select>
+
+          {/* If 'Others', show input */}
+          {isOtherDestination && (
+            <input
+              type="text"
+              name="customDestination"
+              value={formData.customDestination}
+              onChange={handleChange}
+              placeholder="Enter your destination"
+              className="mt-4 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+            />
+          )}
         </div>
 
-        {/* Duration */}
+        {/* From and To Dates (optional) */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label
-              htmlFor="from"
-              className="block font-montserrat text-sm font-medium mb-2 text-gray-700"
-            >
-              From <span className="text-red-500">*</span>
+            <label htmlFor="from" className="block font-montserrat text-sm font-medium mb-2 text-gray-700">
+              From
             </label>
             <input
               type="date"
@@ -165,16 +182,12 @@ const CallNow = () => {
               name="from"
               value={formData.from}
               onChange={handleChange}
-              required
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
             />
           </div>
           <div>
-            <label
-              htmlFor="to"
-              className="block font-montserrat text-sm font-medium mb-2 text-gray-700"
-            >
-              To <span className="text-red-500">*</span>
+            <label htmlFor="to" className="block font-montserrat text-sm font-medium mb-2 text-gray-700">
+              To
             </label>
             <input
               type="date"
@@ -182,26 +195,21 @@ const CallNow = () => {
               name="to"
               value={formData.to}
               onChange={handleChange}
-              required
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
             />
           </div>
         </div>
 
-        {/* Type of Trip */}
+        {/* Type of Trip (optional) */}
         <div>
-          <label
-            htmlFor="type-of-trip"
-            className="block font-montserrat text-sm font-medium mb-2 text-gray-700"
-          >
-            Type of Trip <span className="text-red-500">*</span>
+          <label htmlFor="type-of-trip" className="block font-montserrat text-sm font-medium mb-2 text-gray-700">
+            Type of Trip
           </label>
           <select
             id="type-of-trip"
             name="typeOfTrip"
             value={formData.typeOfTrip}
             onChange={handleChange}
-            required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           >
             <option value="" disabled>
@@ -214,13 +222,10 @@ const CallNow = () => {
           </select>
         </div>
 
-        {/* Email ID */}
+        {/* Email (optional) */}
         <div>
-          <label
-            htmlFor="email"
-            className="block font-montserrat text-sm font-medium mb-2 text-gray-700"
-          >
-            Email ID <span className="text-red-500">*</span>
+          <label htmlFor="email" className="block font-montserrat text-sm font-medium mb-2 text-gray-700">
+            Email ID
           </label>
           <div className="relative">
             <AiOutlineMail className="absolute top-3 left-3 text-gray-500" />
@@ -228,22 +233,19 @@ const CallNow = () => {
               type="email"
               id="email"
               name="email"
+              required
               value={formData.email}
               onChange={handleChange}
-              required
               placeholder="Enter your email"
               className="w-full pl-10 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
             />
           </div>
         </div>
 
-        {/* Phone Number */}
+        {/* Phone (optional) */}
         <div>
-          <label
-            htmlFor="phone"
-            className="block font-montserrat text-sm font-medium mb-2 text-gray-700"
-          >
-            Phone Number <span className="text-red-500">*</span>
+          <label htmlFor="phone" className="block font-montserrat text-sm font-medium mb-2 text-gray-700">
+            Phone Number
           </label>
           <div className="relative">
             <AiOutlinePhone className="absolute top-3 left-3 text-gray-500" />
@@ -253,14 +255,13 @@ const CallNow = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              required
               placeholder="Enter your phone number"
               className="w-full pl-10 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
             />
           </div>
         </div>
 
-        {/* Submit Button */}
+        {/* Submit */}
         <div>
           <button
             type="submit"

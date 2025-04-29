@@ -35,7 +35,7 @@ function ExploreInternational() {
 
    
     const getSliceIndex = () => {
-        if (screenWidth >= 1000 && screenWidth <= 1260) {
+        if (screenWidth >= 1000 && screenWidth <= 1290) {
             return 3;
         }
         return 4; 
