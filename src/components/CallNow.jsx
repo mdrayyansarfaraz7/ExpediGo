@@ -63,7 +63,7 @@ const CallNow = () => {
     console.log(payload);
     try {
       const response = await axios.post(
-        'http://localhost:8080/enquire',
+        'https://expedigo-backend.onrender.com/enquire',
         payload
       );
 
